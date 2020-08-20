@@ -1,0 +1,508 @@
+{
+	"info": {
+		"_postman_id": "1946aeff-40cc-4bc7-ab81-51a4f06e0bc3",
+		"name": "HTTPBin.org Collections",
+		"description": "The collection requests are based on http://httpbin.org/ website",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "HTTPBin GET",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "httpbin.org/get",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Passing data with Query Parameters in GET Requests",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept-Language",
+						"value": "text/html",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "httpbin.org/get?name=John&age=35",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "John"
+						},
+						{
+							"key": "age",
+							"value": "35"
+						},
+						{
+							"key": "email",
+							"value": "john@example.com",
+							"disabled": true
+						}
+					]
+				},
+				"description": "httpbin.org/get?name=John&age=30"
+			},
+			"response": []
+		},
+		{
+			"name": "Passing data with Path Variables in GET Requests",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "httpbin.org/status/200",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"status",
+						"200"
+					]
+				},
+				"description": "httpbin.org/status/100"
+			},
+			"response": []
+		},
+		{
+			"name": "Passing data in GET Request with Path Variable and Query Parameters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "httpbin.org/status/:status?name=John",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"status",
+						":status"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "John"
+						}
+					],
+					"variable": [
+						{
+							"key": "status",
+							"value": "200",
+							"type": "string"
+						}
+					]
+				},
+				"description": "httpbin.org/status/:status?name=John"
+			},
+			"response": []
+		},
+		{
+			"name": "Bearer Authentication without Token Data",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "test",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "httpbin.org/bearer",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"bearer"
+					]
+				},
+				"description": "httpbin.org/bearer"
+			},
+			"response": []
+		},
+		{
+			"name": "Bearer Authentication with Token Data",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer test",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "httpbin.org/bearer",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"bearer"
+					]
+				},
+				"description": "httpbin.org/bearer"
+			},
+			"response": []
+		},
+		{
+			"name": "HTTPBin POST Request - Individual Data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"orderid\": \"1000\",\n\t\"quantity\": 20,\n\t\"productid\": 2000\n}"
+				},
+				"url": {
+					"raw": "httpbin.org/post",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"post"
+					]
+				},
+				"description": "httpbin.org/post"
+			},
+			"response": []
+		},
+		{
+			"name": "HTTPBin POST Request - Array of Data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"orderid\":\"2000.1\",\n\t\"products\": [\n\t\t{\n\t\t\t\"quantityid\": 2,\n\t\t\t\n\t\t\t\"productid\": 1001\n\t\t},\n\t\t{\n\t\t\t\"quantityid\": 3,\n\t\t\t\n\t\t\t\"productid\": 1002\n\t\t}\n\t\t\n\t\t\t\t]\n}"
+				},
+				"url": {
+					"raw": "httpbin.org/post",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"post"
+					]
+				},
+				"description": "httpbin.org/post"
+			},
+			"response": []
+		},
+		{
+			"name": "HTTPBin POST Request - Assignment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"orderid\":\"2000.1\",\n\t\"customerid\":\"100\",\n\t\"products\": [\n\t\t{\n\t\t\t\"quantityid\": 2,\n\t\t\t\n\t\t\t\"productid\": 1001\n\t\t},\n\t\t{\n\t\t\t\"quantityid\": 3,\n\t\t\t\n\t\t\t\"productid\": 1002\n\t\t}\n\t\t\n\t\t\t\t]\n}"
+				},
+				"url": {
+					"raw": "httpbin.org/post",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"post"
+					]
+				},
+				"description": "httpbin.org/post\n\nAdded: CustomerID to the request body"
+			},
+			"response": []
+		},
+		{
+			"name": "HTTPBin Bearer",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer foo2",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "httpbin.org/bearer",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"bearer"
+					]
+				},
+				"description": "httpbin.org/bearer"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Universal Unique ID Generator",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "httpbin.org/uuid",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"uuid"
+					]
+				},
+				"description": "httpbin.org/uuid"
+			},
+			"response": []
+		},
+		{
+			"name": "GET UUID in Console Log",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "edac9d5a-c066-4adc-a44a-9214c2b31791",
+						"exec": [
+							"console.log(pm.response.json())"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "httpbin.org/uuid",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"uuid"
+					]
+				},
+				"description": "httpbin.org/uuid"
+			},
+			"response": []
+		},
+		{
+			"name": "GET UUID in Console Log and Response using Tests",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6e7b4819-1d29-4cb8-bace-7e69cd4a8c02",
+						"exec": [
+							"const response = pm.response.json();",
+							"console.log(response.uuid);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "httpbin.org/uuid",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"uuid"
+					]
+				},
+				"description": "httpbin.org/uuid\n\nUsing Console Log and Response"
+			},
+			"response": []
+		},
+		{
+			"name": "GET UUID value and pass to Global Variable",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e203ffc7-b19f-4988-86e7-ae6977b187c5",
+						"exec": [
+							"const response = pm.response.json();",
+							"console.log(response.uuid);",
+							"pm.globals.set(\"orderid\", response.uuid);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "httpbin.org/uuid",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"uuid"
+					]
+				},
+				"description": "httpbin.org/uuid\n\npm.globals.set(\"variable_key\",\"variable_value\")"
+			},
+			"response": []
+		},
+		{
+			"name": "HTTPBin POST Request - Passing data through Global Variables",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"orderid\":\"{{orderid}}\",\n\t\"customerid\":\"100\",\n\t\"products\": [\n\t\t{\n\t\t\t\"quantityid\": 2,\n\t\t\t\n\t\t\t\"productid\": 1001\n\t\t},\n\t\t{\n\t\t\t\"quantityid\": 3,\n\t\t\t\n\t\t\t\"productid\": 1002\n\t\t}\n\t\t\n\t\t\t\t]\n}"
+				},
+				"url": {
+					"raw": "httpbin.org/post",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"post"
+					]
+				},
+				"description": "httpbin.org/post\n\nThe global variable_value is updated from environment, Where data is stored.\n\n"
+			},
+			"response": []
+		},
+		{
+			"name": "GET Login Request - Bearer Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0c5f73af-2a21-4cd4-9b6c-0f05a084a553",
+						"exec": [
+							"const response=pm.response.json()",
+							"console.log(response.token)",
+							"",
+							"pm.globals.set(\"token\", response.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "foo1",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "httpbin.org/bearer",
+					"host": [
+						"httpbin",
+						"org"
+					],
+					"path": [
+						"bearer"
+					]
+				},
+				"description": "httpbin.org/bearer\n"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "947ded28-a5af-415d-b4ff-43299a2bbddd",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "6f3bd425-70e6-43dd-b62f-5cad98fee2d5",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
